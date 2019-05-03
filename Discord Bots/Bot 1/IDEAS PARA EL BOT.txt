@@ -1,0 +1,24 @@
+
+
+    1) Almacenar personajes para cada usuario con sus stats
+        1.a) Almacenar nombre, clase, raza, y stats
+        1.b) Poder editar rasgos puntuales del personaje sin cambiar los otros
+        2.c) Agregar Inventario*
+    2) Crear enemigos para los personajes de los usuarios
+        2.a) Crear stats para los enemigos
+        2.b) Hacer varios enemigos de distintas dificultades
+        2.c) Crear recompenzas por derrotar los enemigos
+        2.d) Que las recompenzas sean dinamicas
+        2.e) Hacer jefes*
+    3) Hacer formas de combate
+        3.a) Crear un metodo para que los personajes peleen contra los enemigos
+        3.b) Hacer un sistema de subida de nivel por derrotar muchos enemigos
+        3.c) Poder elegir la dificultad del enemigo, y si el enemigo es aleatorio o no
+    4) Hacer que los personajes puedan pelear entre si
+        4.a) Recompensas por derrotar jugadores*
+    5) Hacer uso de cogs para estar mas ordenado
+    6) Aventura single-player
+        6.a) Trama (copiar alguna de internet)
+        6.b) Recompensas*
+    
+
