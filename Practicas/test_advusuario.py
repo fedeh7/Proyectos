@@ -17,6 +17,8 @@ class TestUsuario(unittest.TestCase):
         self.assertEqual(resultado,"Muy Larga")
     def test_usuario_Valido(self):
         resultado = advusuario(1234)
-        self.assertEqual(resultado,"Numero Valido")
+        self.assertEqual(resultado,1234)
+        
+
 if __name__ =='__main__':
     unittest.main()

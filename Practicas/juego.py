@@ -6,7 +6,7 @@ def main():
     opcion = ""
     while x == 0:
         opcion = ""
-        opcion = input("Si quiere adivinar el numero de la maquina ingrese 1, si quiere que la maquina adivine su numero ingrese 2: ")
+        opcion = input("\nSi quiere adivinar el numero de la maquina ingrese 1, si quiere que la maquina adivine su numero ingrese 2: ")
         if opcion != "1" and opcion != "2":
             print("Debe ingresar '1' o '2'!")
         elif opcion == "1":

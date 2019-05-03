@@ -1,24 +1,21 @@
-class Error(Exception):
+class RespuestaMuyChica(Exception):
     pass
-class RespuestaMuyChica(Error):
+class RespuestaMuyGrande(Exception):
     pass
-class RespuestaMuyGrande(Error):
+class RespuestaConNumerosRepetidos(Exception):
     pass
-class RespuestaConNumerosRepetidos(Error):
-    pass
-
+    
 def advusuario(respuesta):
     try:
         x = int(respuesta)
         z = str(respuesta)
         if len(z) < 4:
-            raise RespuestaMuyChica
+            raise RespuestaMuyChica("Muy Chica")
         elif len(z) > 4:
-            raise RespuestaMuyGrande
+            raise RespuestaMuyGrande("Muy Grande")
         elif z[0] == z[1] or z[0] == z[2] or z[0] == z[3] or z[1] == z[2] or z[1] == z[3] or z[2] == z[3]:
-            raise RespuestaConNumerosRepetidos
-        else:
-            return "Numero Valido"
+            raise RespuestaConNumerosRepetidos("Repetidos")
+        
     except ValueError:
         print("La respuesta contiene letras")
         return "ValueError"
@@ -32,17 +29,19 @@ def advusuario(respuesta):
         print("La respuesta tiene numeros repetidos")
         return "Repetidos"
     x = 0
-    
+    intentos = 0
     while x == 0:
         vector = []
         bien = 0
         regular = 0
         solucion = []
+        respuesta = str(respuesta)
         for i in respuesta:
             solucion.append(int(i))
         #print("La solucion es: ",solucion)
         y = 0
         while y == 0:
+            intentos = intentos + 1
             num = input("Ingrese un numero de 4 cifras distintas: ")
             vector = []
             if num.isnumeric() == True:
@@ -71,5 +70,10 @@ def advusuario(respuesta):
         print("bien ", bien)
         print("regular ", regular)
         if bien == 4:
-            print("Muy bien has ganado")
+            for i in range(4):
+                vector[i] = str(vector[i])
+            r = int("".join(vector))
+            print(f"Muy bien has ganado en {intentos} intentos!\nLa respuesta era {r}")
             x = 1
+            return r
+            
