@@ -1,5 +1,5 @@
 import unittest
-from advusuario import advusuario
+from advusuario import advusuario, ingresodedato, verificaciondedato, bienregular, victoria
 
 class TestUsuario(unittest.TestCase):
     
@@ -18,7 +18,9 @@ class TestUsuario(unittest.TestCase):
     def test_usuario_Valido(self):
         resultado = advusuario(1234)
         self.assertEqual(resultado,1234)
-        
+
+    def test_dato_
+
 
 if __name__ =='__main__':
     unittest.main()
