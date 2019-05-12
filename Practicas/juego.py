@@ -1,6 +1,7 @@
 import random
 from advusuario import advusuario
-from advmaquina import advmaquina
+from computerclass import Computer
+
 def main():
     y = 0
     x = 0
@@ -33,24 +34,15 @@ def main():
             advusuario(solucion)
             x = 1
         elif opcion == "2":
-            solucion = ""
-            while y == 0:
-                vector = []
-                solucion = input("\nIngrese el numero que quiere que la maquina adivine: ")
-                if solucion.isnumeric() == True:
-                    for i in solucion:
-                        vector.append(i)
-                    if len(solucion) != 4:
-                        print("\nError.Noson4numeros\nRecuerde que tienen que ser 4 numeros!")
-                    elif vector[0] == vector[1] or vector[0] == vector[2] or vector[0] == vector[3] or vector[1] == vector[2] or vector[1] == vector[3] or vector[2] == vector[3]:
-                        print("\nError.Haynumerosiguales\nRecuerde que los numeros tienen que ser distintos!")                     
-                    else:
-                        #print("El numero ingresado es valido")
-                        y = 1
-                else: 
-                    print("\nError.Hayletras\nTiene que ingresar solo 4 numeros! Diferentes!")
-            advmaquina(solucion)
-            x = 2
+            num = input("\nElija un numero: ")
+            juego = Computer()
+            intento = 0
+            while juego.is_playing == True:
+                intento = intento + 1
+                print("Recuerde que su numero es: ",num)
+                juego.play()
+            print(f"Termino en {intento} intentos")
+            x = 1
         else:
             print("\nSurgio un error en la eleccion de opciones")
 
