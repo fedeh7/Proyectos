@@ -15,7 +15,7 @@ def main():
         elif opcion == "1":
             intento = ""
             juego = Usuario()
-            print(juego.respuesta)
+            #print(juego.respuesta)
             while juego.is_playing == True:
                 intento = input("intento: ")
                 juego.play(intento)
