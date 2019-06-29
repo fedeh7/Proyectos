@@ -64,7 +64,8 @@ class TestComputer(unittest.TestCase):
         self.assertFalse(juego.verificador("11", 2))
         self.assertFalse(juego.verificador("5", 2))
         self.assertFalse(juego.verificador("A", 2))
-
+        self.assertFalse(juego.verificador("1", 3))
+        self.assertFalse(juego.is_playing)
     def test_check_bienregular(self):
         juego = Computer()
         juego.bien = 3
