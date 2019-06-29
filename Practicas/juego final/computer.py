@@ -9,25 +9,28 @@ class Computer():  # Crea al jugador computadora
         self.generador()
         self.bien = 0
         self.regular = 0
+        self.loop_bien = False
+        self.loop_regular = False
+        self.loop_general = False
 
 ###############################################################################
 ###############################################################################
 
     def check(self): # Compara el num que acaba de mandar, con todos los demas
-        b = 0                              # numeros posibles, y reduce la lista de posibles segun 
-        r = 0                              # los valores de "bien" y de "regular"
+        bien = 0                              # numeros posibles, y reduce la lista de posibles segun 
+        regular = 0                              # los valores de "bien" y de "regular"
         not_posible = []
         self.posibles.remove(self.guess)
         for k in self.posibles:
-            b = 0
-            r = 0
+            bien = 0
+            regular = 0
             for i in range(4):
                 for j in range(4):
                     if self.guess[j] == k[i] and i == j:
-                        b = b + 1
+                        bien = bien + 1
                     elif self.guess[j] == k[i] and i != j:
-                        r = r + 1
-            if self.bien != b or self.regular != r:
+                        regular = regular + 1
+            if self.bien != bien or self.regular != regular:
                 not_posible.append(k)
                 #print("Agregando valor a not_posible")
         for borrar in not_posible:
@@ -39,15 +42,13 @@ class Computer():  # Crea al jugador computadora
 ###############################################################################
 
     def play(self): # Intenta adivinar el num, sacandolo de la lista de numeros posibles
-        """
-        bien = 0
-        regular = 0
-        guess = 0
-        x = 0
-        """
+        
         try:
             self.guess = random.choice(self.posibles)
             print(f"Es el num {self.guess}?\n")
+            self.loop_bien = True
+            self.loop_regular = True
+            self.loop_general = True
             return True
         except:
             print("A cometido un error en algun momento, y no quedan numeros posibles para seguir intentando")
@@ -55,28 +56,11 @@ class Computer():  # Crea al jugador computadora
             return False
         
 
-        """while x == 0:
-            print("Bien?: ")
-            bien = self.verificador()
-            print("\nRegular?: ")
-            regular = self.verificador()
-            if bien+regular > 4 or bien == 3:
-                print("\nA cometido un error al ingresar los 'bien' y 'regular', intente denuevo\n")    
-                print(f"Es el num {guess}?\n")
-            else:
-                x = 1       
-        if bien == 4:
-            print("Gane!")
-            self.is_playing = False    
-        else:
-            self.check(guess, bien, regular)
-"""
+        
 ###############################################################################
 ###############################################################################
 
-    def verificador(self,num): # Verifica que el usuario haya ingresado un numero valido para "bien" y "regular"
-        valor = 0
-        
+    def verificador(self,num,bien_o_regular): # Verifica que el usuario haya ingresado un numero valido para "bien" y "regular"
         valor = num
         if valor.isnumeric():
             valor = int(valor)
@@ -88,8 +72,16 @@ class Computer():  # Crea al jugador computadora
                 return False
             else:
                 # Numero ingresado es valido
-                return True
-                #x = 1
+                if bien_o_regular == 1:
+                    self.bien = int(num)
+                    self.loop_bien = False
+                elif bien_o_regular == 2:
+                    self.regular = int(num)
+                    self.loop_regular = False
+                else:
+                    print("Hubo un error al identificar si el valor es de 'Bien' o de 'Regular'")
+                    self.is_playing = False
+                    return False
         else:
             print("No ingrese letras, ingrese un numero entre 0 y 4")
             return False
@@ -97,19 +89,19 @@ class Computer():  # Crea al jugador computadora
 ###############################################################################
 ###############################################################################
 
-    def check_bienregular(self, bien, regular):  # Verifica que ambos valores combinados de 'bien' y 'regular' sean coherentes
-        if bien+regular > 4 or (bien == 3 and regular == 1):
+    def check_bienregular(self):  # Verifica que ambos valores combinados de 'bien' y 'regular' sean coherentes
+        if self.bien + self.regular > 4 or (self.bien == 3 and self.regular == 1):
                 print("\nA cometido un error al ingresar los 'bien' y 'regular', intente denuevo\n")    
                 return False
 
-        elif bien == 4 and regular == 0:
+        elif self.bien == 4 and self.regular == 0:
             print("Gane!")
             self.is_playing = False 
+            self.loop_general = False
             return True
 
         else:
-            self.bien = int(bien)
-            self.regular = int(regular)
+            self.loop_general = False
             return True
 
 

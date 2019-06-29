@@ -1,5 +1,5 @@
 import unittest
-from usuarioclass_final import Usuario
+from usuario import Usuario
 
 class TestUsuario(unittest.TestCase):
     def test_inicio_usuario(self):
@@ -27,6 +27,8 @@ class TestUsuario(unittest.TestCase):
 
     def test_checknum(self):
         juego = Usuario()
+        prueba = juego.check_num("")
+        self.assertFalse(prueba)
         prueba = juego.check_num("12345")
         self.assertFalse(prueba)
         prueba = juego.check_num("12EA")

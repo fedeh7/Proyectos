@@ -68,14 +68,3 @@ class Usuario():
             print(f"Regular: {self.regular}")
 
     
-"""
-def main():
-    intento = ""
-    juego = Usuario()
-    print(juego.respuesta)
-    while juego.is_playing == True:
-        intento = input("intento: ")
-        juego.play(intento)
-    print(f"Ganaste en {juego.turno} intentos")
-main()
-"""
