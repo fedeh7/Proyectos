@@ -20,6 +20,7 @@ def main():
                 intento = input("intento: ")
                 juego.play(intento)
             print(f"Ganaste en {juego.turno} intentos")
+            menu = 1
         ########## Opcion 2 ##########    
         elif opcion == "2":
             num = input("\nElija un numero: ")
@@ -42,6 +43,9 @@ def main():
                         juego.check()
             print(f"Termino en {intento} intentos")
             menu = 1
+
+
+        # Error al elegir opción  
         else:
             print("\nSurgio un error en la eleccion de opciones")
 
